@@ -39,13 +39,24 @@ namespace Avila_CodingTest
 
         #region  Methods
 
-        public void PopulateListItems(string accessFile)
+        public void PopulateListItems(string accessFile, StatusMessageDelegate messageDelegate)
         {
             DataAccess dataAccess = new DataAccess(accessFile);
-            DataItems = dataAccess.GetNamesList();
+            try
+            {
+                DataItems = dataAccess.GetNamesList();
+                messageDelegate("Successfully retrieved ML.ML_Names from Access Db File:= " + accessFile);
+
+            }catch(Exception ex)
+            {
+                messageDelegate("There was an error retrieving data from selected file= " + accessFile + "\nExceptionMessage:" + ex.Message);
+            }
+            
         }
         #endregion
 
 
     }
+
+    public delegate void StatusMessageDelegate(string message);
 }

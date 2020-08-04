@@ -55,9 +55,18 @@ namespace Avila_CodingTest
                     //check if an Access file is selected
                     if (openFileDialog.FileNames.Length == 1 & openFileDialog.SafeFileName.Contains(".mdb"))
                     {
-                        mainViewModel.PopulateListItems(openFileDialog.FileName);
-                        lstbx_Names.ItemsSource = mainViewModel.DataItems;
-                        lbl_dbConnection.Content = "Viewing ML.[ML_Name]\nFrom DB: " + openFileDialog.FileName;
+                        mainViewModel.PopulateListItems(openFileDialog.FileName, DisplayStatusMessage);
+                        //make sure items are populated before handing to GUI
+                        if(mainViewModel.DataItems.Count>0)
+                        {
+                            lstbx_Names.ItemsSource = mainViewModel.DataItems;
+                            lbl_dbConnection.Content = "Viewing ML.[ML_Name]\nFrom DB: " + openFileDialog.FileName;
+                        }
+                        
+                    }
+                    else
+                    {
+                        MessageBox.Show("Wrong file type selected. Please select a Microsoft Access Database file ( .mdb, .accdb", "Wrong File Type Selected");
                     }
 
                 }
@@ -65,5 +74,10 @@ namespace Avila_CodingTest
             }
         }
         #endregion
+
+        private void DisplayStatusMessage(string message)
+        {
+            MessageBox.Show(message);
+        }
     }
 }
