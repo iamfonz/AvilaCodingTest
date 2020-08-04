@@ -45,7 +45,7 @@ namespace Avila_CodingTest
             DataAccess dataAccess = new DataAccess(accessFile);
             try
             {
-                DataItems = dataAccess.GetNamesList();
+                dataItems = dataAccess.GetNamesList();
                 messageDelegate("Successfully retrieved ML.ML_Names from Microsoft Access Database File:\n" + accessFile);
 
             }catch(Exception ex)
