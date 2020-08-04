@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace Avila_CodingTest
 {
+  
     public class MainViewModel 
     {
 
@@ -45,11 +46,11 @@ namespace Avila_CodingTest
             try
             {
                 DataItems = dataAccess.GetNamesList();
-                messageDelegate("Successfully retrieved ML.ML_Names from Access Db File:= " + accessFile);
+                messageDelegate("Successfully retrieved ML.ML_Names from Microsoft Access Database File:\n" + accessFile);
 
             }catch(Exception ex)
             {
-                messageDelegate("There was an error retrieving data from selected file= " + accessFile + "\nExceptionMessage:" + ex.Message);
+                messageDelegate("There was an error retrieving data from selected file:\n" + accessFile + "\nExceptionMessage:" + ex.Message);
             }
             
         }

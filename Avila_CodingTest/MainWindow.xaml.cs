@@ -56,8 +56,9 @@ namespace Avila_CodingTest
                     if (openFileDialog.FileNames.Length == 1 & openFileDialog.SafeFileName.Contains(".mdb"))
                     {
                         mainViewModel.PopulateListItems(openFileDialog.FileName, DisplayStatusMessage);
-                        //make sure items are populated before handing to GUI
-                        if(mainViewModel.DataItems.Count>0)
+
+                        //make sure items are populated before updating GUI
+                        if(mainViewModel.DataItems.Count > 0)
                         {
                             lstbx_Names.ItemsSource = mainViewModel.DataItems;
                             lbl_dbConnection.Content = "Viewing ML.[ML_Name]\nFrom DB: " + openFileDialog.FileName;
@@ -77,7 +78,7 @@ namespace Avila_CodingTest
 
         private void DisplayStatusMessage(string message)
         {
-            MessageBox.Show(message);
+            MessageBox.Show(message, "Status Message");
         }
     }
 }

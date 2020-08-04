@@ -44,7 +44,7 @@ namespace Avila_CodingTest
             using (var connection = new OleDbConnection(this.GetConnectionString()))
             {
                 connection.Open();
-                var query = "SELECT ML.[ML_Name] FROM ML";
+                var query = "SELECT ML.[ML_Nam] FROM ML";
                 var command = new OleDbCommand(query, connection);
                 var reader = command.ExecuteReader();
                 while (reader.Read())
